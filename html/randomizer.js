@@ -1,18 +1,14 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const auth = localStorage.getItem('auth');
+function authHeader() {
+    const username = localStorage.getItem('username');
+    const password = localStorage.getItem('password');
 
-    if (auth) {
-        $.ajaxSetup({
-            beforeSend: function (xhr) {
-                xhr.setRequestHeader("Authorization", `Basic ${auth}`);
-            }
-        });
-    } else {
-        if (window.location.pathname !== "/login.html") {
-            window.location.href = "login.html";
-        }
+    if (!username || !password) {
+        alert("You are not logged in!");
+        return '';
     }
-});
+    const credentials = btoa(username + ':' + password);
+    return 'Basic ' + credentials;
+}
 
 function loadItems() {
     document.getElementById('content').innerHTML = '';
@@ -62,12 +58,17 @@ function addItem(name){
         alert("Item name cannot be empty.");
         return;
     }
+
+    //must be logged in
+    const auth = authHeader();
+
     console.log(JSON.stringify({ name: itemName }));
 
     $.ajax({
         url: '/api/items',
         method: 'POST',
         contentType: 'application/json',
+        headers: { 'Authorization': auth },
         data: JSON.stringify({ id, name: itemName }),
         success: function(item) {
             console.log("Item added: ", item);
@@ -96,6 +97,11 @@ function addItem(name){
                 const breakLine = document.createElement('br');
                 document.getElementById('content').appendChild(breakLine);
 
+        },
+        error: function(xhr) {
+            if (xhr.status === 401) {
+                alert("You are not authorized to view the items. Please log in.");
+            }
         }
     });
     loadItems();
@@ -103,12 +109,21 @@ function addItem(name){
 
 function deleteItem(id){
     if(confirm("Are you sure? This will be deleted permanently.")) {
+        //must be logged in
+        const auth = authHeader();
+
         $.ajax({
             url: `/api/items/?uid=${id}`,
             method: 'DELETE',
+            headers: { 'Authorization': auth },
             success: function() {
                 $('#item-'+id).remove();
                 loadItems();
+            },
+            error: function(xhr) {
+                if (xhr.status === 401) {
+                    alert("You are not authorized to view the items. Please log in.");
+                }
             }
         });
     }
@@ -117,11 +132,15 @@ function deleteItem(id){
 function editItem(id){
     let eName = prompt("Edit restaurant name:");
     if (!eName) return; // if no name is entered
+
+    //must be logged in
+    const auth = authHeader();
   
     $.ajax({
         url: `/api/items/?uid=${id}`,
         method: 'PUT',
         contentType: 'application/json',
+        headers: { 'Authorization': auth },
         data: JSON.stringify({uid: id, name: eName }),
         success: function(item) {
             let itemDiv = document.getElementById('item-' + item.id);
@@ -147,11 +166,18 @@ function editItem(id){
                 item.appendChild(delButt);
             }
             loadItems();
+        },
+        error: function(xhr) {
+            if (xhr.status === 401) {
+                alert("You are not authorized to view the items. Please log in.");
+            }
         }
     });
 }
 
 function randomize(){
+    //must be logged in
+    const auth = authHeader();
     $.ajax({
         url: '/api/items',
         method: 'GET',
@@ -178,6 +204,11 @@ function randomize(){
                 document.getElementById('random').appendChild(breakLine);
                 document.getElementById('random').appendChild(randDiv);
                 document.getElementById('random').appendChild(breakLine);
+            }
+        },
+        error: function(xhr) {
+            if (xhr.status === 401) {
+                alert("You are not authorized to view the items. Please log in.");
             }
         }
     })

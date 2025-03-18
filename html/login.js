@@ -53,7 +53,7 @@ document.getElementById("registerForm").addEventListener("submit", (ev) => {
         url: '/api/users',
         method: "POST",
         data: JSON.stringify({ username, password }),
-        success: function () {
+        success: function (response) {
             alert("User registered successfully!");
             window.location.href = "login.html";
         }
