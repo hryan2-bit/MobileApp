@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="login.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="login.js" defer></script>
+</head>
+<body>
+    <div class="topnav">
+        <a href="index.html">Home</a>
+        <a href="randomizer.html">Randomize</a>
+        <a class="active" href="login.html">Login</a>
+    </div>
+    <br><br><br>
+    <h2>Login</h2>
+    <form id="loginForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" required><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" required><br><br>
+        <button type="submit">Login</button>
+    </form>
+    <br><br><br>
+    <h2>Register</h2>
+    <form id="registerForm">
+        <label for="usernameReg">Username:</label>
+        <input type="text" id="usernameReg" required><br><br>
+        <label for="passwordReg">Password:</label>
+        <input type="password" id="passwordReg" required><br><br>
+        <label for="passwordReg2">Verify Password:</label>
+        <input type="password" id="passwordReg2" required><br><br>
+        <button type="submit">Make User</button>
+    </form>
+
+    <p id="error" style="color: red;"></p>
+</body>
+</html>

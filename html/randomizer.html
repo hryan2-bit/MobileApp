@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Food Randomizer</title>
+        <link rel="stylesheet" type="text/css" href="index.css">
+
+        <!-- ajax -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <div class="topnav">
+            <a href="index.html">Home</a>
+            <a class="active" href="randomizer.html">Randomize</a>
+            <a href="login.html">Login</a>
+        </div>
+        <br><br><br>
+        <form>
+            <label for="rName">Name:</label>
+            <input type="text" id="rName" name="rName"><br><br>
+            <button type="button" id="addRes" onclick="addItem(document.getElementById('rName').value)">Add Restaruant Name</button>
+            <button type="button" id="randomize" onclick="randomize()">Randomize Restaurants</button>
+        </form>
+        <br><br><br>
+        <div id="content"></div><br><br><br>
+        <div id="random"></div>
+
+        <script src="randomizer.js"></script>
+    </body>
+</html>
