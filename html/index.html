@@ -5,20 +5,65 @@
         <title>Home</title>
         <link rel="stylesheet" type="text/css" href="index.css">
         <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAabdV80bFytAM2-D94aDQ9FGz_XMg_8_s&callback=initMap&v=weekly"
-        defer></script>
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAabdV80bFytAM2-D94aDQ9FGz_XMg_8_s&libraries=places,marker&callback=initMap"
+        async defer></script>
+        <script src="https://accounts.google.com/gsi/client" async defer></script>
     </head>
     <body>
+        <div id="top"></div>
         <div class="topnav">
-            <a class="active" href="index.html">Home</a>
-            <a href="randomizer.html">Randomize</a>
-            <a href="login.html">Login</a>
+            <div class="nav-links">
+                <a href="#top"> Map </a>
+                <a href="#results"> Randomize </a>
+                <a href="#history"> History </a>
+                <a href="#about"> About </a>
+                <a href="#contact"> Contact </a>
+            </div>
+            <div id="user-info" style="margin-left:auto; padding: 8px;"></div>
+            <div id="g_id_signin"></div>
         </div>
 
-        <!-- Map view -->
-        <div id="map"></div>
 
-        <div id="results"></div>
+        <div id="search-bar-container" class="search-bar-container">
+        <input
+        id="pac-input"
+        class="controls"
+        type="text"
+        placeholder="Search Box"
+        />
+        </div>
+        <!-- Map view -->
+        <div id="map-container">
+            <div id="map"></div>
+        </div><br><br><br><br><br>
+
+        <div id="results" style="margin-top: 10px;">
+            <h1>List for Randomizing</h1>
+        </div>
+        <button onclick="randomize()"> Randomize Selected Places</button>
+        <br>
+        <div id="randPlaceDisplay"></div>
+        <br><br><br><br><br>
+        <div id="history">
+            <h1>Randomized History</h1>
+            <ul id="historyList"></ul>
+        </div>
+        <br><br><br><br><br>
+        <div id="about">
+            <h1>About</h1>
+            <h5>Why would you use this app?</h5>
+            <p>If you ever feel like you or a your group cannot decide on something, and cannot decide what you want to eat or 
+                do not want to make someone have all of the pressure to decide the place to eat at for the group or yourself.</p><br>
+            <h5>How does it work?</h5>
+            <p>This app works by using all of the selections you have chosen. Adding them to a temporary list that is only available while you are currently using the app. Then, randomizing through
+                the list in a near true randomization with no biases.</p>
+        </div>
+        <br><br><br><br><br>
+        <div id="Contact">
+            <h1>Contact</h1>
+            <h5>Email</h5>
+            <p>hryanmain777@gmail.com</p>
+        </div>
 
         <script src="js.js"></script>
     </body>

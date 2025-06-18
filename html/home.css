@@ -1,0 +1,49 @@
+.header{
+    padding: 60px;
+    text-align: center;
+    background: #353E43;
+    color: orange;
+    font-size: 30px;
+    font-style: italic;
+    font-family: "Papyrus", fantasy;
+    font-weight: 200;
+}
+
+.topnav{
+    background: #353E43;
+    padding: 10px 0px;
+    overflow: hidden;
+    display: flex;
+}
+
+.topnav a {
+    float: left;
+    color: orange;
+    text-align: center;
+    padding: 15px 20px;
+    font-size: 17px;
+}
+
+.topnav a:hover {
+    background: #353E43;
+    color: orange;
+}
+
+.topnav a.active {
+    color: white;
+    font-weight: bold;
+}
+
+.image {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.image img{
+    max-width: 100%;
+    height: auto;
+    flex: 1 1 auto;
+    object-fit: cover;
+}

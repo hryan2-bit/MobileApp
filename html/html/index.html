@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Home</title>
+        <link rel="stylesheet" type="text/css" href="index.css">
+        <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAabdV80bFytAM2-D94aDQ9FGz_XMg_8_s&libraries=places&callback=initMap"
+        defer></script>
+    </head>
+    <body>
+        <div class="topnav">
+            <a class="active" href="index.html">Home</a>
+            <a href="randomizer.html">Randomize</a>
+            <a href="login.html">Login</a>
+        </div>
+
+        <input
+        id="pac-input"
+        class="controls"
+        type="text"
+        placeholder="Search Box"
+        />
+        <!-- Map view -->
+        <div id="map"></div>
+
+        <div id="results"></div>
+
+        <script src="js.js"></script>
+    </body>
+</html>

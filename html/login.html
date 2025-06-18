@@ -5,7 +5,6 @@
     <title>Login</title>
     <link rel="stylesheet" type="text/css" href="login.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="login.js" defer></script>
 </head>
 <body>
     <div class="topnav">
@@ -14,25 +13,31 @@
         <a class="active" href="login.html">Login</a>
     </div>
     <br><br><br>
-    <h2>Login</h2>
-    <form id="loginForm">
-        <label for="username">Username:</label>
-        <input type="text" id="username" required><br><br>
-        <label for="password">Password:</label>
-        <input type="password" id="password" required><br><br>
-        <button type="submit">Login</button>
+    <table>
+        <thead>
+          <tr>
+            <th>username</th><th>admin</th><th></th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+      <button id="adduser">Add User</button>
+      <button id="logout">Log Out</button>
+      <div id="currentUser"></div>
+
+    <br><br><br><br><br>
+    <form>
+        <label for="rName">Name:</label>
+        <input type="text" id="rName" name="rName"><br><br>
+        <button type="button" id="addRes" onclick="addItem(document.getElementById('rName').value)">Add Restaruant Name</button>
+        <button type="button" id="randomize" onclick="randomize()">Randomize Restaurants</button>
     </form>
     <br><br><br>
-    <h2>Register</h2>
-    <form id="registerForm">
-        <label for="usernameReg">Username:</label>
-        <input type="text" id="usernameReg" required><br><br>
-        <label for="passwordReg">Password:</label>
-        <input type="password" id="passwordReg" required><br><br>
-        <label for="passwordReg2">Verify Password:</label>
-        <input type="password" id="passwordReg2" required><br><br>
-        <button type="submit">Make User</button>
-    </form>
+    <div id="content"></div><br><br><br>
+    <div id="random"></div>
+
+      <script src="login.js"></script>
 
     <p id="error" style="color: red;"></p>
 </body>
